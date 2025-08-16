@@ -3,6 +3,7 @@ import AppLayout from "../Components/Layouts/AppLayout.jsx";
 import React from "react";
 
 export default function ErrorPage({ status, title, message }) {
+
     const errorMessages = {
         403: {
             title: "Access denied",

@@ -44,9 +44,10 @@ class AuthController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ], $request->input('remember_me'))) {
-            return redirect()->route('error.index')->withErrors(
-                ['error' => 'Пароль или почта не валидны']
-            );
+            return redirect()->route('error.index')->with([
+                'status' => 401,
+                'message' => 'Email or password is invalid'
+            ]);
         }
 
         $request->session()->regenerate();

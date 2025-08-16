@@ -41,4 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-Route::get('/error')->name('error.index');
+Route::get('/error', function () {
+    return Inertia::render('ErrorPage', [
+        'status' => session('status') ?? 500,
+        'message' => session('message') ?? 'Something went wrong'
+    ]);
+})->name('error.index');
